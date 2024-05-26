@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+
 	"restapi/internal/model"
 	"restapi/internal/repository"
 )
@@ -48,7 +49,7 @@ func (h *ProjectHandler) GetAllProjects(w http.ResponseWriter, r *http.Request) 
 		}
 		defer r.Body.Close()
 
-		if err := h.projectRepo.Create(&project); err != nil {
+		if err := h.projectRepo.CreateProject(&project); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
